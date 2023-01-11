@@ -1,9 +1,7 @@
 <script>
 </script>
 
-<main>
-  <button class="btn"></button>
-</main>
+<main />
 
 <style global lang="postcss">
   @tailwind base;
