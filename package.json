@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "description": "A simple tool for creating and using digital macros.",
   "main": "src/electron/index.js",
+  "type": "module",
   "scripts": {
-    "dev:electron": "electron ."
+    "dev:electron": "electron .",
+    "dev:svelte": "vite"
   },
   "repository": {
     "type": "git",
@@ -18,5 +20,10 @@
   "homepage": "https://github.com/powercode-boys/digital-macro-pad#readme",
   "devDependencies": {
     "electron": "^22.0.1"
+  },
+  "dependencies": {
+    "@sveltejs/vite-plugin-svelte": "^2.0.2",
+    "svelte": "^3.55.1",
+    "vite": "^4.0.4"
   }
 }
