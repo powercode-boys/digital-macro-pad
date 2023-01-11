@@ -1,0 +1,17 @@
+{
+  "name": "digital-macro-pad",
+  "version": "0.0.0",
+  "description": "A simple tool for creating and using digital macros.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/powercode-boys/digital-macro-pad.git"
+  },
+  "author": "powercode-boys",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/powercode-boys/digital-macro-pad/issues"
+  },
+  "homepage": "https://github.com/powercode-boys/digital-macro-pad#readme"
+}
