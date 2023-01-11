@@ -1,0 +1,49 @@
+{
+  "name": "digital-macro-pad",
+  "version": "0.0.0",
+  "description": "A simple tool for creating and using digital macros.",
+  "main": "src/electron/index.cjs",
+  "type": "module",
+  "scripts": {
+    "build:electron": "electron-forge make",
+    "build:svelte": "vite build",
+    "build": "npm run build:svelte && npm run build:electron && rimraf src/svelte/dist",
+    "dev:electron": "cross-env NODE_ENV=development electron-forge start",
+    "dev:svelte": "cross-env NODE_ENV=development vite",
+    "dev": "concurrently \"npm:dev:*\" --kill-others",
+    "make": "electron-forge make"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/powercode-boys/digital-macro-pad.git"
+  },
+  "author": "powercode-boys",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/powercode-boys/digital-macro-pad/issues"
+  },
+  "homepage": "https://github.com/powercode-boys/digital-macro-pad#readme",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.4",
+    "@electron-forge/maker-deb": "^6.0.4",
+    "@electron-forge/maker-rpm": "^6.0.4",
+    "@electron-forge/maker-squirrel": "^6.0.4",
+    "@electron-forge/maker-zip": "^6.0.4",
+    "@sveltejs/vite-plugin-svelte": "^2.0.2",
+    "autoprefixer": "^10.4.13",
+    "concurrently": "^7.6.0",
+    "cross-env": "^7.0.3",
+    "daisyui": "^2.46.1",
+    "electron": "^22.0.1",
+    "postcss": "^8.4.21",
+    "postcss-load-config": "^4.0.1",
+    "rimraf": "^3.0.2",
+    "svelte": "^3.55.1",
+    "svelte-preprocess": "^5.0.0",
+    "tailwindcss": "^3.2.4",
+    "vite": "^4.0.4"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  }
+}
