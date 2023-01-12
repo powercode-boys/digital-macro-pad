@@ -1,5 +1,5 @@
 <div
-  class="tooltip tooltip-bottom sm:tooltip-top sm:fixed sm:right-[5vw] sm:bottom-[5vh]"
+  class="tooltip tooltip-bottom sm:tooltip-top sm:fixed sm:right-[5vw] sm:bottom-[5vh] w-full sm:w-fit p-8 sm:p-0"
   data-tip="Makro hinzufügen"
 >
   <label
