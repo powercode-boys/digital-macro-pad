@@ -3,7 +3,7 @@
 </script>
 
 <div
-  class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-2"
+  class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4"
 >
   {#each buttons as button}
     <button class="btn btn-lg btn-primary">Makro</button>
