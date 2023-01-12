@@ -11,8 +11,7 @@
     error = false;
   }
 
-  function submit(e) {
-    e.preventDefault();
+  function submit() {
     if (name.trim() === "") {
       error = true;
       return;
@@ -24,7 +23,8 @@
 
 <input type="checkbox" id="addMacroModal" class="modal-toggle" />
 <label class="modal cursor-pointer">
-  <label for="" class="modal-box relative flex flex-col space-y-2">
+  <!-- maybe add close on outside click -> can't use normal method because close() needs to be called on modal close -->
+  <label class="modal-box relative flex flex-col space-y-2">
     <h3 class="font-bold text-lg">Neuen Makro erstellen!</h3>
     <p>Erstelle hier einen neuen Makro für deine Sammlung.</p>
     {#if error}<div class="alert alert-error shadow-lg">
@@ -45,7 +45,7 @@
         </div>
       </div>
     {/if}
-    <form on:submit={submit} class="space-y-2">
+    <form on:submit|preventDefault={submit} class="space-y-2">
       <div class="form-control w-full">
         <label class="label" for="addMacroNameInput">
           <span class="label-text">Der name deines Makros</span>
@@ -54,7 +54,7 @@
           type="text"
           placeholder="Name"
           id="addMacroNameInput"
-          class="input input-bordered w-full"
+          class={"input input-bordered w-full" + (error ? " input-error" : "")}
           bind:value={name}
         />
       </div>
@@ -70,9 +70,7 @@
         />
       </div>
       <div class="modal-action space-x-2">
-        <button class="btn btn-success" type="submit" on:click={submit}
-          >Erstellen</button
-        >
+        <button class="btn btn-success" type="submit">Erstellen</button>
         <button class="btn btn-error" type="button" on:click={close}
           >Abbrechen</button
         >
