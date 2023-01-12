@@ -5,8 +5,11 @@
 
   let macros = [];
 
-  function addMacro(name, befehl) {
-    macros = [...macros, { name: name, befehl: befehl }];
+  function addMacro(name, befehl, beschreibung) {
+    macros = [
+      ...macros,
+      { name: name, befehl: befehl, beschreibung: beschreibung },
+    ];
   }
 </script>
 
@@ -18,11 +21,13 @@
       <AddMacroButton />
 
       {#each macros as macro}
-        <Macro name={macro.name} />
+        <Macro {macro} />
       {/each}
     </div>
   {:else}
-    <div class="flex flex-col space-y-10 justify-center h-screen items-center text-center">
+    <div
+      class="flex flex-col space-y-10 justify-center h-screen items-center text-center"
+    >
       <p class="text-base-content">
         Du hast noch keinen makro erstellt, drücke das "+" um einen zu
         erstellen!

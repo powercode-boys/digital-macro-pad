@@ -2,12 +2,14 @@
   export let addMacro;
   let name = "";
   let befehl = "";
+  let beschreibung = "";
   let error = false;
 
   function close() {
     document.getElementById("addMacroModal").click();
     name = "";
     befehl = "";
+    beschreibung = "";
     error = false;
   }
 
@@ -17,7 +19,7 @@
       error = true;
       return;
     }
-    addMacro(name, befehl);
+    addMacro(name, befehl, beschreibung);
     close();
   }
 </script>
@@ -56,6 +58,18 @@
           id="addMacroNameInput"
           class="input input-bordered w-full"
           bind:value={name}
+        />
+      </div>
+      <div class="form-control w-full">
+        <label class="label" for="addMacroDescInput">
+          <span class="label-text">Die Beschreibung deines Makros</span>
+        </label>
+        <input
+          type="text"
+          placeholder="Beschreibung"
+          id="addMacroDescInput"
+          class="input input-bordered w-full"
+          bind:value={beschreibung}
         />
       </div>
       <div class="form-control w-full">
