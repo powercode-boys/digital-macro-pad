@@ -4,6 +4,7 @@
 
   let name = "";
   let command = "";
+  let description = "";
   let error = false;
   let modal;
 
@@ -11,6 +12,7 @@
     modal.click();
     name = "";
     command = "";
+    description = "";
     error = false;
   }
 
@@ -22,12 +24,18 @@
     addMacro({
       name: name,
       command: command,
+      description: description,
     });
     close();
   }
 </script>
 
-<input bind:this={modal} type="checkbox" id="addMacroModal" class="modal-toggle" />
+<input
+  bind:this={modal}
+  type="checkbox"
+  id="addMacroModal"
+  class="modal-toggle"
+/>
 <label class="modal cursor-pointer">
   <!-- maybe add close on outside click -> can't use normal method because close() needs to be called on modal close -->
   <label class="modal-box relative flex flex-col space-y-2">
@@ -47,6 +55,18 @@
           id="addMacroNameInput"
           class={"input input-bordered w-full" + (error ? " input-error" : "")}
           bind:value={name}
+        />
+      </div>
+      <div class="form-control w-full">
+        <label class="label" for="addMacroDescInput">
+          <span class="label-text">Die Beschreibung deines Makros</span>
+        </label>
+        <input
+          type="text"
+          placeholder="Beschreibung"
+          id="addMacroDescInput"
+          class="input input-bordered w-full"
+          bind:value={description}
         />
       </div>
       <div class="form-control w-full">
