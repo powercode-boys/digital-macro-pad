@@ -1,26 +1,33 @@
 <script>
-    let buttons = Array(9);
+  import AddMacroButton from "./Components/AddMacroButton.svelte";
+  import Macro from "./Components/Macro.svelte";
+  import Modals from "./Modals.svelte";
+  import { macroStore } from "./stores";
 </script>
 
-{#each buttons as button}
-    <button class="btn btn-lg btn-primary w-1/4 h-4/5 m-10">
-        Makro
-    </button>
-{/each}
-
-<button class="btn btn-circle btn-outline" id="addButton">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-</button>
+<main>
+    {#if $macroStore.length > 0}
+      <div
+        class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4"
+      >
+        {#each $macroStore as macro}
+          <Macro name={macro.name} />
+        {/each}
+      </div>
+    {:else}
+      <div class="flex flex-col justify-center items-center h-screen">
+        <p class="text-base-content text-center p-4">
+          Du hast noch kein Makro erstellt, drücke das "+" um einen zu
+          erstellen!
+        </p>
+      </div>
+    {/if}
+  <AddMacroButton />
+</main>
+<Modals />
 
 <style global lang="postcss">
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
-
-    #addButton {
-        position: fixed;
-        left: 90%;
-        top: 90%;
-    }
-
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 </style>
