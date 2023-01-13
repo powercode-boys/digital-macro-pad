@@ -16,7 +16,7 @@
       </div>
     {:else}
       <div class="flex flex-col justify-center items-center h-screen">
-        <p class="text-base-content">
+        <p class="text-base-content text-center p-4">
           Du hast noch keinen makro erstellt, drücke das "+" um einen zu
           erstellen!
         </p>
