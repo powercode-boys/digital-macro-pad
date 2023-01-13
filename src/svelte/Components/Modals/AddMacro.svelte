@@ -37,7 +37,8 @@
   id="addMacroModal"
   class="modal-toggle"
 />
-<label class="modal cursor-pointer">
+<!-- pointer cursor when close on outside click -->
+<label class="modal">
   <!-- maybe add close on outside click -> can't use normal method because close() needs to be called on modal close -->
   <label class="modal-box relative flex flex-col space-y-2">
     <h3 class="font-bold text-lg">Neues Makro erstellen!</h3>
