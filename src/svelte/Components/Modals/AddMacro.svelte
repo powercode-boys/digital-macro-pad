@@ -1,7 +1,7 @@
 <script>
   import Error from "../Alerts/Error.svelte";
+  import { addMacro } from "../../stores";
 
-  export let addMacro;
   let name = "";
   let befehl = "";
   let error = false;
