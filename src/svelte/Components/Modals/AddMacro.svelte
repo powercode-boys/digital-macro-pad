@@ -5,9 +5,10 @@
   let name = "";
   let command = "";
   let error = false;
+  let modal;
 
   function close() {
-    document.getElementById("addMacroModal").click();
+    modal.click();
     name = "";
     command = "";
     error = false;
@@ -26,7 +27,7 @@
   }
 </script>
 
-<input type="checkbox" id="addMacroModal" class="modal-toggle" />
+<input bind:this={modal} type="checkbox" id="addMacroModal" class="modal-toggle" />
 <label class="modal cursor-pointer">
   <!-- maybe add close on outside click -> can't use normal method because close() needs to be called on modal close -->
   <label class="modal-box relative flex flex-col space-y-2">
