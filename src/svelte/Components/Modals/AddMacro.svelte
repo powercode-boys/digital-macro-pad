@@ -3,13 +3,13 @@
   import { addMacro } from "../../stores";
 
   let name = "";
-  let befehl = "";
+  let command = "";
   let error = false;
 
   function close() {
     document.getElementById("addMacroModal").click();
     name = "";
-    befehl = "";
+    command = "";
     error = false;
   }
 
@@ -18,7 +18,10 @@
       error = true;
       return;
     }
-    addMacro(name, befehl);
+    addMacro({
+      name: name,
+      command: command,
+    });
     close();
   }
 </script>
@@ -53,7 +56,7 @@
           placeholder="Befehl"
           id="addMacroBefehlInput"
           class="textarea textarea-bordered w-full"
-          bind:value={befehl}
+          bind:value={command}
         />
       </div>
       <div class="modal-action space-x-2">
