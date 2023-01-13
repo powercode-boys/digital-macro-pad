@@ -1,9 +1,9 @@
 <div
-  class="tooltip tooltip-bottom sm:tooltip-top sm:fixed sm:right-[5vw] sm:bottom-[5vh] w-full sm:w-fit"
+  class="tooltip tooltip-left sm:tooltip-top fixed right-[5vw] bottom-[5vh]"
   data-tip="Makro hinzufügen"
 >
   <label
-    class="btn btn-block sm:btn-circle btn-outline btn-success border-2"
+    class="btn btn-circle btn-success border-2"
     for="addMacroModal"
     ><svg
       xmlns="http://www.w3.org/2000/svg"
