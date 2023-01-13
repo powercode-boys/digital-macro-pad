@@ -30,15 +30,15 @@
 <label class="modal cursor-pointer">
   <!-- maybe add close on outside click -> can't use normal method because close() needs to be called on modal close -->
   <label class="modal-box relative flex flex-col space-y-2">
-    <h3 class="font-bold text-lg">Neuen Makro erstellen!</h3>
-    <p>Erstelle hier einen neuen Makro für deine Sammlung.</p>
+    <h3 class="font-bold text-lg">Neues Makro erstellen!</h3>
+    <p>Erstelle hier einen neues Makro für deine Sammlung.</p>
     {#if error}
       <Error>Error! Der Name des Makros darf nicht leer sein!</Error>
     {/if}
     <form on:submit|preventDefault={submit} class="space-y-2">
       <div class="form-control w-full">
         <label class="label" for="addMacroNameInput">
-          <span class="label-text">Der name deines Makros</span>
+          <span class="label-text">Der Name deines Makros</span>
         </label>
         <input
           type="text"
@@ -50,7 +50,7 @@
       </div>
       <div class="form-control w-full">
         <label class="label" for="addMacroBefehlInput">
-          <span class="label-text h-25">Der Befehl für deinen Makro</span>
+          <span class="label-text h-25">Der Befehl für dein Makro</span>
         </label>
         <textarea
           placeholder="Befehl"
