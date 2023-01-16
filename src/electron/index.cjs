@@ -1,5 +1,12 @@
 const { app, BrowserWindow } = require("electron");
 const fs = require("fs");
+const path = require("path");
+
+const macro = {
+  title: 'Example Title',
+  description: 'Example Description',
+  command: 'Example Command'
+};
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -16,11 +23,17 @@ function createWindow() {
   }
 }
 
-fs.writeFile(app.getPath('userData') + '\\test.txt', 'example text', function (err) {
-  if (err) throw err;
-});
+function createJSON() {
+    fs.writeFileSync(path.join(app.getPath('userData'), 'test.json'), JSON.stringify(macro));
+}
+
+function readJSON() {
+    return fs.readFileSync(path.join(app.getPath('userData'), "test.json"), "utf8");
+}
 
 app.whenReady().then(() => {
+  createJSON();
+  console.log(readJSON());
   createWindow();
 
   app.on("activate", function () {
