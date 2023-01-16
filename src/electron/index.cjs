@@ -6,7 +6,7 @@ function createWindow() {
     height: 600,
   });
 
-  win.setMenu(null);
+  // win.setMenu(null); // enabling this prevents opening up the console, even with short key commands
 
   if (process.env.NODE_ENV !== "development") {
     // Load production build
