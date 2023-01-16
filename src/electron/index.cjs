@@ -23,12 +23,14 @@ function createWindow() {
   }
 }
 
+const userDataPath = path.join(app.getPath('userData'), 'test.json');
+
 function createJSON() {
-    fs.writeFileSync(path.join(app.getPath('userData'), 'test.json'), JSON.stringify(macro));
+    fs.writeFileSync(userDataPath, JSON.stringify(macro));
 }
 
 function readJSON() {
-    return fs.readFileSync(path.join(app.getPath('userData'), "test.json"), "utf8");
+    return fs.readFileSync(userDataPath, "utf8");
 }
 
 app.whenReady().then(() => {
