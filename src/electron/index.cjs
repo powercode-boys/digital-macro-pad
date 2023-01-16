@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require("electron");
+const fs = require("fs");
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -14,6 +15,10 @@ function createWindow() {
     win.loadURL("http://localhost:5173/");
   }
 }
+
+fs.writeFile(app.getPath('userData') + '\\test.txt', 'example text', function (err) {
+  if (err) throw err;
+});
 
 app.whenReady().then(() => {
   createWindow();
