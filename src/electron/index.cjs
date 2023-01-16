@@ -6,8 +6,6 @@ function createWindow() {
     height: 600,
   });
 
-  win.setMenu(null)
-
   if (process.env.NODE_ENV !== "development") {
     // Load production build
     win.loadFile(`${__dirname}/../svelte/dist/index.html`);
