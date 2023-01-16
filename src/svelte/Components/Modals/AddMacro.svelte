@@ -1,7 +1,7 @@
 <script>
   import Error from "../Alerts/Error.svelte";
   import { addMacro } from "../../stores";
-  import Wrapper from "../Inputs/Wrapper.svelte";
+  import InputWrapper from "../Inputs/InputWrapper.svelte";
 
   let name = "";
   let command = "";
@@ -47,16 +47,16 @@
       <Error>Error! Der Name des Makros darf nicht leer sein!</Error>
     {/if}
     <form on:submit|preventDefault={submit} class="space-y-2">
-      <Wrapper id="addMacroNameInput" label="Der Name deines Makros">
+      <InputWrapper id="addMacroNameInput" label="Der Name deines Makros">
         <input
           type="text"
           placeholder="Name"
           id="addMacroNameInput"
           class={"input input-bordered w-full" + (error ? " input-error" : "")}
           bind:value={name}
-        /></Wrapper
+        /></InputWrapper
       >
-      <Wrapper id="addMacroDescInput" label="Die Beschreibung deines Makros">
+      <InputWrapper id="addMacroDescInput" label="Die Beschreibung deines Makros">
         <input
           type="text"
           placeholder="Beschreibung"
@@ -64,15 +64,15 @@
           class="input input-bordered w-full"
           bind:value={description}
         />
-      </Wrapper>
-      <Wrapper id="addMacroBefehlInput" label="Der Befehl für dein Makro">
+      </InputWrapper>
+      <InputWrapper id="addMacroBefehlInput" label="Der Befehl für dein Makro">
         <textarea
           placeholder="Befehl"
           id="addMacroBefehlInput"
           class="textarea textarea-bordered w-full"
           bind:value={command}
         />
-      </Wrapper>
+      </InputWrapper>
       <div class="modal-action space-x-2">
         <button class="btn btn-success" type="submit">Erstellen</button>
         <button class="btn btn-error" type="button" on:click={close}
