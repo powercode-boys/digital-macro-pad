@@ -32,7 +32,6 @@
             />
           </svg>
         </label>
-
         <ul
           tabindex="0"
           class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
@@ -42,6 +41,7 @@
               class="text-error"
               on:click={() => {
                 removeMacro(idx);
+                document.activeElement.blur();
               }}
             >
               <svg

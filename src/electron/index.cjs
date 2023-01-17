@@ -5,12 +5,13 @@ function createWindow() {
     width: 800,
     height: 600,
   });
-  
-  win.setMenu(null)
 
   if (process.env.NODE_ENV !== "development") {
     // Load production build
     win.loadFile(`${__dirname}/../svelte/dist/index.html`);
+
+    //hide menu in production
+    win.setMenu(null)
   } else {
     // Load vite dev server page
     win.loadURL("http://localhost:5173/");
