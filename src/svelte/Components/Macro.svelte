@@ -38,6 +38,7 @@
         >
           <li>
             <label
+              class="text-base-content"
               for="editMacroModal"
               on:click={() => {
                 $editStore = { ...macro, idx };
