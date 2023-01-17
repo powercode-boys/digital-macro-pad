@@ -4,4 +4,6 @@ export const macroStore = writable([]);
 
 export function addMacro({ name, command }) {
   macroStore.update((oldMacros) => [...oldMacros, { name: name, command }]);
+  macroStore.subscribe(macros => window.electronAPI.saveMacros(macros));
+
 }
