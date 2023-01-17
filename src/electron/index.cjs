@@ -22,18 +22,24 @@ function createWindow() {
 }
 
 ipcMain.on('saveMacros', (event, macros) => {
-  saveMacros(macros);
+  saveUserData(macros);
 });
 
-function saveMacros(macros) {
-    fs.writeFileSync(userDataPath, JSON.stringify(macros));
+function saveUserData(macros) {
+  fs.writeFileSync(userDataPath, JSON.stringify(macros));
 }
-function readJSON() {
-    return fs.readFileSync(userDataPath, "utf8");
+function readUserData() {
+  try {
+    return JSON.parse(fs.readFileSync(userDataPath, "utf8"));
+  } catch (e) {
+    fs.writeFileSync(userDataPath, "[]");
+    return JSON.parse("[]");
+  }
 }
 
 app.whenReady().then(() => {
   createWindow();
+  ipcMain.handle('getMacros', readUserData);
 
   app.on("activate", function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
