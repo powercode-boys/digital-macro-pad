@@ -33,7 +33,7 @@ function readUserData() {
     return JSON.parse(fs.readFileSync(userDataPath, "utf8"));
   } catch (e) {
     fs.writeFileSync(userDataPath, "[]");
-    return JSON.parse("[]");
+    return [];
   }
 }
 
