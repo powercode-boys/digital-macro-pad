@@ -1,5 +1,9 @@
 <script>
+  import { removeMacro } from "../stores";
+
+
     export let macro;
+    export let idx;
 
     const clipboardIcon = '&#128203;';
     let confirmPopup = false;
