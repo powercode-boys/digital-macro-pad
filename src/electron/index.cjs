@@ -1,17 +1,15 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const fs = require("fs");
 const path = require("path");
-
-const macro = {
-  title: 'Example Title',
-  description: 'Example Description',
-  command: 'Example Command'
-};
+const userDataPath = path.join(app.getPath('userData'), 'userData.json');
 
 function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js')
+    }
   });
 
   if (process.env.NODE_ENV !== "development") {
@@ -23,20 +21,25 @@ function createWindow() {
   }
 }
 
-const userDataPath = path.join(app.getPath('userData'), 'test.json');
+ipcMain.on('saveMacros', (event, macros) => {
+  saveUserData(macros);
+});
 
-function createJSON() {
-    fs.writeFileSync(userDataPath, JSON.stringify(macro));
+function saveUserData(macros) {
+  fs.writeFileSync(userDataPath, JSON.stringify(macros));
 }
-
-function readJSON() {
-    return fs.readFileSync(userDataPath, "utf8");
+function readUserData() {
+  try {
+    return JSON.parse(fs.readFileSync(userDataPath, "utf8"));
+  } catch (e) {
+    fs.writeFileSync(userDataPath, "[]");
+    return [];
+  }
 }
 
 app.whenReady().then(() => {
-  createJSON();
-  console.log(readJSON());
   createWindow();
+  ipcMain.handle('getMacros', readUserData);
 
   app.on("activate", function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
