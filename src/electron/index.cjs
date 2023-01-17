@@ -1,7 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
-const fs = require("fs");
 const path = require("path");
-const userDataPath = path.join(app.getPath('userData'), 'userData.json');
+const { saveUserData, readUserData } = require("./file-io.cjs");
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -25,17 +24,7 @@ ipcMain.on('saveMacros', (event, macros) => {
   saveUserData(macros);
 });
 
-function saveUserData(macros) {
-  fs.writeFileSync(userDataPath, JSON.stringify(macros));
-}
-function readUserData() {
-  try {
-    return JSON.parse(fs.readFileSync(userDataPath, "utf8"));
-  } catch (e) {
-    fs.writeFileSync(userDataPath, "[]");
-    return [];
-  }
-}
+
 
 app.whenReady().then(() => {
   createWindow();
