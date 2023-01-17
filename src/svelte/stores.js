@@ -18,12 +18,21 @@ function removeByIdx(array, idx) {
 }
 
 export function editMacro(data, idx) {
+  console.log(idx);
   macroStore.update((oldMacros) => {
     let newMacros = [...oldMacros];
     newMacros[idx] = { ...oldMacros[idx], ...data };
+    console.log(oldMacros, newMacros);
     return newMacros;
   });
 }
 
 //example
 // editMacro({name: "Test"}, 1) -> changes name of second (bc of 0 indexing) macro to "Test"
+
+export const editStore = writable({
+  name: "",
+  description: "",
+  command: "",
+  idx: 0,
+});
