@@ -16,6 +16,6 @@ jobs:
       - run: npm run build
       - uses: actions/upload-artifact@v3
         with:
-        name: ediz-artifact
-        path: ${{ github.workspace }}\out\make\squirrel.windows\x64\
+          name: ediz-artifact
+          path: ${{ github.workspace }}\out\make\squirrel.windows\x64\
 
