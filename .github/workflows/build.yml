@@ -13,6 +13,6 @@ jobs:
       - run: npm run build
       - uses: actions/upload-artifact@v3
         with:
-          name: Digital Macro Pad
+          name: Digital Macro Pads
           path: ${{ github.workspace }}\out\digital-macro-pad-win32-x64\
 
