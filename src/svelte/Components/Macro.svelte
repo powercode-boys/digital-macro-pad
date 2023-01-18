@@ -8,7 +8,7 @@
 
 <div class="card bg-primary text-primary-content p-4 h-full">
   <div class="flex h-full">
-    <div class="card-body">
+    <div class="card-body select-none">
         <h2 class="card-title overflow-clip" style="word-break: break-word; hyphens: auto">{macro.name}</h2>
       <p class="break-words italic">{macro.description}</p>
     </div>
