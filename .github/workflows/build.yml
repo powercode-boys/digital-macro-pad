@@ -2,7 +2,7 @@ name: Build Artifact
 run-name: creating-artifact
 on: [push]
 jobs:
-  check-bat-version:
+  check-bats-version:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
