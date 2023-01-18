@@ -1,4 +1,4 @@
-name: digital-macro-pad
+name: Build Artifact
 run-name: creating artifact
 on:
   push:

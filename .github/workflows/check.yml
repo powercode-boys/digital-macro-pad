@@ -1,4 +1,4 @@
-name: digital-macro-pad
+name: Compile Check
 run-name: svelte-check
 on: [push]
 jobs:
