@@ -3,6 +3,12 @@
   import Macro from "./Components/Macro.svelte";
   import Modals from "./Modals.svelte";
   import { macroStore } from "./stores";
+  import {onMount} from "svelte";
+
+  onMount(async () => {
+    let macros = await window.electronAPI.getMacros()
+    macroStore.update(() => macros)
+  });
 </script>
 
 <main>
