@@ -1,6 +1,8 @@
 # Digital Macro Pad
 A simple tool for creating and using digital macros.
 
+<img src="digital-macro-pad-screenshot.png">
+
 ## Features
 - Creating, editing and deleting macros and assigning a **name**, a **description** and a **command**
 - Copying the command to the clipboard
@@ -23,7 +25,7 @@ This project was created by combining [Svelte](https://svelte.dev/) and [Electro
     #addButton {
     width: 27px;
     height: 18px;
-    filter: invert(42%) sepia(93%) saturate(342%) hue-rotate(87deg) brightness(119%) contrast(119%);
+    filter: invert(42%) sepia(93%) saturate(242%) hue-rotate(87deg) brightness(169%) contrast(99%);
 }
 
 </style>
