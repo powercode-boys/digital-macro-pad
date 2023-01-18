@@ -10,7 +10,7 @@
   <div class="flex h-full">
     <div class="card-body select-none">
         <h2 class="card-title overflow-clip" style="word-break: break-word; hyphens: auto">{macro.name}</h2>
-      <p class="break-words italic">{macro.description}</p>
+      <p class="break-words italic" style="word-break: break-word; hyphens: auto">{macro.description}</p>
     </div>
 
     <div class="card-actions">
