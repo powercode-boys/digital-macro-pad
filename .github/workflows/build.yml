@@ -11,12 +11,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - uses: actions/upload-artifact@v3
-        with:
-          name: ediz-artifact
-          path: ${{ github.workspace
-                }}\out\make\squirrel.windows\x64\
       - run: echo node ist installiert und npm wird gerunnt
       - run: npm install
       - run: npm run build
+      - uses: actions/upload-artifact@v3
+        with:
+        name: ediz-artifact
+        path: ${{ github.workspace }}\out\make\squirrel.windows\x64\
 
