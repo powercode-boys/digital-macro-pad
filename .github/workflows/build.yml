@@ -1,10 +1,6 @@
 name: Build Artifact
 run-name: creating artifact
-on:
-  push:
-    branches:
-      - 'main'
-      - 'dev'
+on: [push]
 jobs:
   check-bat-version:
     runs-on: windows-latest
@@ -18,5 +14,5 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: Digital Macro Pad
-          path: ${{ github.workspace }}\out\make\squirrel.windows\x64\
+          path: ${{ github.workspace }}\out\digital-macro-pad-win32-x64\
 
