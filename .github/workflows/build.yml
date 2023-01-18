@@ -1,5 +1,5 @@
 name: Build Artifact
-run-name: creating artifact
+run-name: creating-artifact
 on: [push]
 jobs:
   check-bat-version:
@@ -13,6 +13,6 @@ jobs:
       - run: npm run build
       - uses: actions/upload-artifact@v3
         with:
-          name: Digital Macro Pads
+          name: Digital Macro Pad
           path: ${{ github.workspace }}\out\digital-macro-pad-win32-x64\
 
