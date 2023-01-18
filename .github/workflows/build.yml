@@ -1,21 +1,22 @@
-name: github-actions
-run-name: build ausfuehren
-on: [push]
+name: digital-macro-pad
+run-name: creating artifact
+on:
+  push:
+    branches:
+      - 'main'
+      - 'dev'
 jobs:
   check-bat-version:
     runs-on: windows-latest
     steps:
-      - run: echo jetzt wird ausgecheckt
       - uses: actions/checkout@v3
-      - run: echo jetzt wird node installiert
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - run: echo node ist installiert und npm wird gerunnt
       - run: npm install
       - run: npm run build
       - uses: actions/upload-artifact@v3
         with:
-          name: ediz-artifact
+          name: Digital Macro Pad
           path: ${{ github.workspace }}\out\make\squirrel.windows\x64\
 

@@ -1,5 +1,5 @@
-name: github-actions-ediz
-run-name: ediz is learning how to actions mit Github machen
+name: digital-macro-pad
+run-name: svelte-check
 on: [push]
 jobs:
   check-bats-version:
