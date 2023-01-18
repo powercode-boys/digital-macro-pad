@@ -15,3 +15,6 @@ A simple tool for creating and using digital macros.
 - Assign name, description and command and confirm
 - After a macro has been created, click the <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/regular/clipboard.svg" width="25" height="18"> icon to copy the command to your clipboard
 - Edit or delete a macro, by clicking the <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/ellipsis-vertical.svg" width="20" height="16"> icon
+
+## Technologies that were used
+This project was created by combining [Svelte](https://svelte.dev/) and [Electron](https://www.electronjs.org/). <br> For styling, we used [daisyUI](https://daisyui.com/) and [Tailwind CSS](https://tailwindcss.com/).
