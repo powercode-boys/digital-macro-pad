@@ -18,3 +18,4 @@ jobs:
         with:
           name: Digital-Macro-Pad
           path: ${{ github.workspace }}\out\make\squirrel.windows\x64
+          retention-days: 2
