@@ -38,9 +38,9 @@ A simple tool for creating and using digital macros.
 
 ## Instructions on using the macro pad
 
-* Click the <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/plus.svg" height="18" style="filter: invert(83%) sepia(83%) saturate(454%) hue-rotate(78deg) brightness(88%) contrast(87%);"> icon in the bottom right to add a new macro.
+* Click the "+" icon in the bottom right to add a new macro.
   * You can assign a name*, description and command to the macro (\* values are required).
-* After a macro has been created click the <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/regular/clipboard.svg" height="18" style="filter: invert(24%) sepia(83%) saturate(2272%) hue-rotate(294deg) brightness(94%) contrast(99%);"> icon to copy the command of a macro to your clipboard.
+* After a macro has been created click the clipboard icon to copy the command of a macro.
 * Edit or delete a macro by accessing a dropdown menu by clicking on the three dots on any macro.
 
 
