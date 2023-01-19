@@ -20,11 +20,14 @@
       error = true;
       return;
     }
-    editMacro({
-      name: name,
-      command: command,
-      description: description,
-    }, idx);
+    editMacro(
+      {
+        name: name,
+        command: command,
+        description: description,
+      },
+      idx,
+    );
     close();
   }
 </script>
@@ -68,6 +71,7 @@
       </InputWrapper>
       <InputWrapper id="editMacroBefehlInput" label="Der Befehl für dein Makro">
         <textarea
+          spellcheck="false"
           placeholder="Befehl"
           id="editMacroBefehlInput"
           class="textarea textarea-bordered w-full"
