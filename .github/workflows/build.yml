@@ -1,9 +1,9 @@
 name: Build Artifact
-on:
-  push:
-    branches:
-      - 'main'
-      - 'dev'
+on: [push]
+  # push:
+  #   branches:
+  #     - 'main'
+  #     - 'dev'
 jobs:
   build-windows:
     runs-on: windows-latest
