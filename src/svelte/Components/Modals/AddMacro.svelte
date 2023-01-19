@@ -76,11 +76,17 @@
           bind:value={command}
         />
       </InputWrapper>
-      <div class="modal-action space-x-2">
-        <button class="btn btn-success" type="submit">Erstellen</button>
-        <button class="btn btn-error" type="button" on:click={close}
-          >Abbrechen</button
-        >
+      <div class="modal-action justify-between space-x-2">
+        <label class="label cursor-pointer gap-2">
+          <input type="checkbox" class="checkbox"/>
+          <span class="label-text">Ausführbar</span>
+        </label>
+        <div>
+          <button class="btn btn-success" type="submit">Erstellen</button>
+          <button class="btn btn-error" type="button" on:click={close}
+            >Abbrechen</button
+          >
+        </div>
       </div>
     </form>
   </label>
