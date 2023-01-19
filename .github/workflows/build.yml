@@ -1,9 +1,9 @@
 name: Build Artifact
-on: [push]
-  # push:
-  #   branches:
-  #     - 'main'
-  #     - 'dev'
+on:
+  push:
+    branches:
+      - "main"
+      - "dev"
 jobs:
   build-windows:
     runs-on: windows-latest
@@ -11,11 +11,10 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
       - run: npm install
       - run: npm run build
       - uses: actions/upload-artifact@v3
         with:
           name: Digital-Macro-Pad
           path: ${{ github.workspace }}\out\make\squirrel.windows\x64
-
