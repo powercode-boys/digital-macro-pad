@@ -9,5 +9,6 @@
   command={$editStore.command}
   description={$editStore.description}
   name={$editStore.name}
+  runable={$editStore.runable}
   idx={$editStore.idx}
 />
