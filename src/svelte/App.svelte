@@ -15,14 +15,15 @@
   {#if $macroStore.length > 0}
     <div
       class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4"
+      style="margin-bottom: calc(10vh + 48px - 1rem);"
     >
-      {#each $macroStore as macro}
-        <Macro {macro} />
+      {#each $macroStore as macro, idx}
+        <Macro {macro} {idx} />
       {/each}
     </div>
   {:else}
     <div class="flex flex-col justify-center items-center h-screen">
-      <p class="text-base-content text-center p-4">
+      <p class="text-base-content text-center p-4 select-none">
         Du hast noch kein Makro erstellt, drücke das "+" um einen zu erstellen!
       </p>
     </div>
