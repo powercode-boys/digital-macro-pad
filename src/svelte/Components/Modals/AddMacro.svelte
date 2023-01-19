@@ -70,6 +70,7 @@
       </InputWrapper>
       <InputWrapper id="addMacroBefehlInput" label="Der Befehl für dein Makro">
         <textarea
+          spellcheck="false"
           placeholder="Befehl"
           id="addMacroBefehlInput"
           class="textarea textarea-bordered w-full"
