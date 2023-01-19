@@ -1,8 +1,7 @@
 name: Compile Check
-run-name: svelte-check
 on: [push]
 jobs:
-  check-bats-version:
+  check-svelte:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -10,4 +9,4 @@ jobs:
         with:
           node-version: '18'
       - run: npm install
-      - run: npm run svelte-check
+      - run: npm run test:svelte

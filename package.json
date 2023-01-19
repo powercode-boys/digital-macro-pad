@@ -11,8 +11,8 @@
     "dev:electron": "cross-env NODE_ENV=development electron-forge start",
     "dev:svelte": "cross-env NODE_ENV=development vite",
     "dev": "concurrently \"npm:dev:*\" --kill-others",
-    "make": "electron-forge make",
-    "svelte-check": "svelte-check"
+    "test:svelte": "svelte-check",
+    "make": "electron-forge make"
   },
   "repository": {
     "type": "git",
