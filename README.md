@@ -1,31 +1,54 @@
 # Digital Macro Pad
+
 A simple tool for creating and using digital macros.
 
-<img src="digital-macro-pad-screenshot.png">
+![](digital-macro-pad-screenshot.png)
+
+
 
 ## Features
-- Creating, editing and deleting macros and assigning a **name**, a **description** and a **command**
-- Copying the command to the clipboard
+
+* Creating, editing and deleting macros with a **name**, a **description** and a **command** to help you speed up your development process.
+* Allows you to store often used macros and copy them when you need them.
+* Macros will be automatically stored on your machine, so they are persistent even if you restart your PC.
+
+
 
 ## Installation guide
-1. Clone the repository, or download and the zip and extract
-2. Navigate to the folder
-3. Run `digital-macro-pad.exe`
 
-## Instructions on using the app
-- Click the <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/circle-plus.svg" id="addButton"> icon in the bottom right corner
-- Assign name, description and command and confirm
-- After a macro has been created, click the <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/regular/clipboard.svg" width="25" height="18"> icon to copy the command to your clipboard
-- Edit or delete a macro, by clicking the <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/ellipsis-vertical.svg" width="20" height="16"> icon
+### Install via Release (Windows only)
 
-## Technologies that were used
-This project was created by combining [Svelte](https://svelte.dev/) and [Electron](https://www.electronjs.org/). <br> For styling, we used [daisyUI](https://daisyui.com/) and [Tailwind CSS](https://tailwindcss.com/).
+1. Download the newest releas from the GitHub [Releases](https://github.com/powercode-boys/digital-macro-pad/releases) tab.
+2. Extract the contents of the zip Archive.
+3. Run the `digital-macro-pad-<Version> Setup.exe` setup installer.
+4. Now the application is available under `%LocalAppData%/digital_macro_pad/app-<Version>/digital-macro-pad.exe`. 
+5. **Optional:** you can link to the application binary to access the Macro Pad from your Desktop.
 
-<style>
-    #addButton {
-    width: 27px;
-    height: 18px;
-    filter: invert(42%) sepia(93%) saturate(242%) hue-rotate(87deg) brightness(169%) contrast(99%);
-}
 
-</style>
+
+### Install via Source (compile by yourself)
+
+**This requires you to have NodeJS and NPM installed.**
+
+1. Clone the repository via git (`git clone https://github.com/powercode-boys/digital-macro-pad.git`).
+2. Navigate into the project folder (`cd digital-macro-pad`).
+3. Install all NPM packages of this project (`npm install`).
+4. Compile the project for your local operating system (`npm run build`)
+5. Navigate into the `out/make/` folder. There will be folders for your local OS with the compiled binaries.
+
+
+
+## Instructions on using the macro pad
+
+* Click the "+" icon in the bottom right to add a new macro.
+  * You can assign a name*, description and command to the macro (\* values are required).
+* After a macro has been created click the clipboard icon to copy the command of a macro.
+* Edit or delete a macro by accessing a dropdown menu by clicking on the three dots on any macro.
+
+
+
+## Technologies that we are using
+
+This project was created by combinig [Svelte](https://svelte.dev/) and [Electron](https://www.electronjs.org/) into a desktop application with reactive UI and file system integration.
+
+For styling and layouting of the project we are using [daisyUI](https://daisyui.com/) on top of [TailwindCSS](https://tailwindcss.com/).
