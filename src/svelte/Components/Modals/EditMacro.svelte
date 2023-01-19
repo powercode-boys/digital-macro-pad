@@ -1,19 +1,17 @@
 <script>
   import Error from "../Alerts/Error.svelte";
-  import { addMacro } from "../../stores";
+  import { editMacro } from "../../stores";
   import InputWrapper from "../Inputs/InputWrapper.svelte";
 
-  let name = "";
-  let command = "";
-  let description = "";
+  export let idx;
+  export let name;
+  export let command;
+  export let description;
   let error = false;
   let modal;
 
   function close() {
     modal.click();
-    name = "";
-    command = "";
-    description = "";
     error = false;
   }
 
@@ -22,11 +20,14 @@
       error = true;
       return;
     }
-    addMacro({
-      name: name,
-      command: command,
-      description: description,
-    });
+    editMacro(
+      {
+        name: name,
+        command: command,
+        description: description,
+      },
+      idx,
+    );
     close();
   }
 </script>
@@ -34,51 +35,51 @@
 <input
   bind:this={modal}
   type="checkbox"
-  id="addMacroModal"
+  id="editMacroModal"
   class="modal-toggle"
 />
 <!-- pointer cursor when close on outside click -->
 <label class="modal">
   <!-- maybe add close on outside click -> can't use normal method because close() needs to be called on modal close -->
   <label class="modal-box relative flex flex-col space-y-2">
-    <h3 class="font-bold text-lg">Neues Makro erstellen!</h3>
-    <p>Erstelle hier einen neues Makro für deine Sammlung.</p>
+    <h3 class="font-bold text-lg">Makro bearbeiten!</h3>
+    <p>Bearbeite hier ein Makro aus deine Sammlung.</p>
     {#if error}
       <Error>Error! Der Name des Makros darf nicht leer sein!</Error>
     {/if}
     <form on:submit|preventDefault={submit} class="space-y-2">
-      <InputWrapper id="addMacroNameInput" label="Der Name deines Makros">
+      <InputWrapper id="editMacroNameInput" label="Der Name deines Makros">
         <input
           type="text"
           placeholder="Name"
-          id="addMacroNameInput"
+          id="editMacroNameInput"
           class={"input input-bordered w-full" + (error ? " input-error" : "")}
           bind:value={name}
         /></InputWrapper
       >
       <InputWrapper
-        id="addMacroDescInput"
+        id="editMacroDescInput"
         label="Die Beschreibung deines Makros"
       >
         <input
           type="text"
           placeholder="Beschreibung"
-          id="addMacroDescInput"
+          id="editMacroDescInput"
           class="input input-bordered w-full"
           bind:value={description}
         />
       </InputWrapper>
-      <InputWrapper id="addMacroBefehlInput" label="Der Befehl für dein Makro">
+      <InputWrapper id="editMacroBefehlInput" label="Der Befehl für dein Makro">
         <textarea
           spellcheck="false"
           placeholder="Befehl"
-          id="addMacroBefehlInput"
+          id="editMacroBefehlInput"
           class="textarea textarea-bordered w-full"
           bind:value={command}
         />
       </InputWrapper>
       <div class="modal-action space-x-2">
-        <button class="btn btn-success" type="submit">Erstellen</button>
+        <button class="btn btn-success" type="submit">bearbeiten</button>
         <button class="btn btn-error" type="button" on:click={close}
           >Abbrechen</button
         >
