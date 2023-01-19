@@ -20,7 +20,9 @@ A simple tool for creating and using digital macros.
 
 1. Download the newest releas from the GitHub [Releases](https://github.com/powercode-boys/digital-macro-pad/releases) tab.
 2. Extract the contents of the zip Archive.
-3. Run the `digital-macro-pad-X.X.X Setup.exe`
+3. Run the `digital-macro-pad-<Version> Setup.exe` setup installer.
+4. Now the application is available under `%LocalAppData%/digital_macro_pad/app-<Version>/digital-macro-pad.exe`. 
+5. **Optional:** you can link to the application binary to access the Macro Pad from your Desktop.
 
 
 
