@@ -103,7 +103,7 @@
     {#if macro.runable}
       <MacroActionButton
         action={() => {
-          alert("Macro was run"); // will be replaced with logic to run a makro
+          console.log("Macro was run"); // will be replaced with logic to run a makro
         }}
       >
         <svg
