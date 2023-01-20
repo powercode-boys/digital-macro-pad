@@ -1,0 +1,42 @@
+name: Release
+on:
+  push:
+    branches:
+      - "main"
+jobs:
+  release:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build
+        run:
+
+
+#on:
+#  push:
+#    # Sequence of patterns matched against refs/tags
+#    tags:
+#      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+#
+#name: Upload Release Asset
+#
+#jobs:
+#  build:
+#    name: Upload Release Asset
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v2
+#      - name: Build project
+#        run: |
+#          mkdir -p app/build/outputs/apk/release
+#          echo hello > app/build/outputs/apk/release/app-release-unsigned.apk
+#      - name: Release with Notes
+#        uses: softprops/action-gh-release@v1
+#        with:
+#          files: app/build/outputs/apk/release/app-release-unsigned.apk
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
