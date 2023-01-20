@@ -1,11 +1,14 @@
 <script>
-  import { editStore, removeMacro } from "../stores";
+  import { editStore, removeMacro, macroStore } from "../stores";
   import MacroActionButton from "./MacroActionButton.svelte";
 
   export let macro;
   export let idx;
+
+  $macroStore[idx].visibility = 'visible'; // every macro should be visible on startup
 </script>
 
+{#if $macroStore[idx].visibility === 'visible'}
 <div class="card bg-primary text-primary-content p-4 h-full">
   <div class="flex h-full">
     <div class="card-body select-none">
@@ -110,3 +113,4 @@
     </MacroActionButton>
   </div>
 </div>
+  {/if}
