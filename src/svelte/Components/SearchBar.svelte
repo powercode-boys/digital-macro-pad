@@ -127,7 +127,12 @@
             >
               {#each THEMES as theme}
                 <li>
-                  <button on:click={() => setTheme(theme)}> {theme}</button>
+                  <button on:click={() => setTheme(theme)}>
+                    {`${theme[0].toUpperCase()}${theme.slice(
+                      1,
+                      theme.length,
+                    )}`}</button
+                  >
                 </li>
               {/each}
             </ul>
