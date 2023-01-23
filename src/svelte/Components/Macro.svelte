@@ -100,7 +100,7 @@
     </div>
   </div>
   <div class="card-actions justify-end">
-    {#if macro.runable}
+    {#if macro.runnable}
       <MacroActionButton
         action={() => {
           console.log("Macro was run"); // will be replaced with logic to run a makro
