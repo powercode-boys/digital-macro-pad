@@ -6,47 +6,10 @@
   import { macroStore } from "./stores";
   import { onMount } from "svelte";
 
-  const THEMES = [
-    "light",
-    "dark",
-    "cupcake",
-    "bumblebee",
-    "emerald",
-    "corporate",
-    "synthwave",
-    "retro",
-    "cyberpunk",
-    "valentine",
-    "halloween",
-    "garden",
-    "forest",
-    "aqua",
-    "lofi",
-    "pastel",
-    "fantasy",
-    "wireframe",
-    "black",
-    "luxury",
-    "dracula",
-    "cmyk",
-    "autumn",
-    "business",
-    "acid",
-    "lemonade",
-    "night",
-    "coffee",
-    "winter",
-  ];
-
   onMount(async () => {
     let macros = await window.electronAPI.getMacros();
     macroStore.update(() => macros);
-    setTheme();
   });
-
-  function setTheme(theme) {
-    document.documentElement.dataset.theme = theme;
-  }
 </script>
 
 <main>
