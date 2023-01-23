@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain, Notification } = require("electron");
 const path = require("path");
 const { saveUserData, readUserData } = require("./file-io.cjs");
 let child_process = require('child_process');
@@ -28,10 +28,17 @@ ipcMain.on('saveMacros', (event, macros) => {
   saveUserData(macros);
 });
 ipcMain.on('execute-command', (event, command) => {
-  child_process.exec(command);
+  command = command.replaceAll("\n", "");
+  try {
+    child_process.exec(command);
+  } catch(e) {
+    notify('Befehl fehlgeschlagen', 'Bitte überprüfe, ob du den Befehl richtig eingegeben hast');
+  }
 });
 
-
+function notify(title, body) {
+  new Notification({ title: title, body: body }).show();
+}
 
 app.whenReady().then(() => {
   createWindow();
