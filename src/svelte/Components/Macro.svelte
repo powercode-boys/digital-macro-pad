@@ -5,10 +5,10 @@
   export let macro;
   export let idx;
 
-  $macroStore[idx].visibility = 'visible'; // every macro should be visible on startup
+  $macroStore[idx].isVisible = true; // every macro should be visible on startup
 </script>
 
-{#if $macroStore[idx].visibility === 'visible'}
+{#if $macroStore[idx].isVisible}
 <div class="card bg-primary text-primary-content p-4 h-full">
   <div class="flex h-full">
     <div class="card-body select-none">
@@ -113,4 +113,4 @@
     </MacroActionButton>
   </div>
 </div>
-  {/if}
+{/if}
