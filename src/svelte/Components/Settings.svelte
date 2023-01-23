@@ -77,7 +77,7 @@
         class="dropdown dropdown-left max-h-screen"
         on:mouseover={() => (themesOpen = true)}
         on:mouseleave={() => (themesOpen = false)}
-      >
+      > <!-- class="outline-accent-content outline-1" wäre eine Möglichkeit um den Themes-Button hervorzuheben -->
         <label tabindex="0" class="flex space-x-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -109,6 +109,16 @@
           </ul>
         {/if}
       </div>
+    </li>
+    <li>
+      <button class="max-h-screen">
+        Import Macros
+      </button>
+    </li>
+    <li>
+      <button class="max-h-screen">
+        Export Macros
+      </button>
     </li>
   </ul>
 </div>
