@@ -103,7 +103,7 @@
     {#if macro.runable}
       <MacroActionButton
         action={() => {
-          console.log("Macro was run"); // will be replaced with logic to run a makro
+          window.electronAPI.executeCommand(macro.command);
         }}
       >
         <svg

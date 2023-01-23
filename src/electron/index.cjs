@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const { saveUserData, readUserData } = require("./file-io.cjs");
+let child_process = require('child_process');
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -25,6 +26,9 @@ function createWindow() {
 
 ipcMain.on('saveMacros', (event, macros) => {
   saveUserData(macros);
+});
+ipcMain.on('execute-command', (event, command) => {
+  child_process.exec(command);
 });
 
 

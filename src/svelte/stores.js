@@ -1,4 +1,4 @@
-import { writable } from "svelte/store";
+import { writable, readable } from "svelte/store";
 
 export const macroStore = writable([]);
 let loaded = false;
