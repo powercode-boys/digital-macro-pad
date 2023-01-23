@@ -28,7 +28,7 @@ ipcMain.on('saveMacros', (event, macros) => {
   saveUserData(macros);
 });
 ipcMain.on('execute-command', (event, command) => {
-  command = command.replaceAll("\n", "");
+  command = command.replaceAll("\n", " ");
   try {
     child_process.exec(command);
   } catch(e) {
