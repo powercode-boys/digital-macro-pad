@@ -15,6 +15,7 @@ module.exports.readUserData = () => {
         return [];
     }
 }
-module.exports.saveTerminalOutput = (stdout) => {
+module.exports.saveTerminalOutput = (stdout, stderr) => {
+    if(stderr) return fs.writeFileSync(TERMINAL_ERROR_PATH, stderr);
     fs.writeFileSync(TERMINAL_OUTPUT_PATH, stdout);
 }
