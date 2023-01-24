@@ -28,7 +28,7 @@ ipcMain.on('saveMacros', (event, macros) => {
 });
 
 ipcMain.on('exportMacros', (event, macros) => {
-  exportMacros(macros)
+  exportMacros(macros);
 });
 
 app.whenReady().then(() => {

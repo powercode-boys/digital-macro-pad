@@ -122,10 +122,10 @@
       </div>
     </li>
     <li>
-      <button on:click={importMacros}>Import Makros</button>
+      <button on:click={importMacros}>Makros importieren</button>
     </li>
     <li>
-      <button on:click={exportMacros}>Export Makros</button>
+      <button on:click={exportMacros}>Makros exportieren</button>
     </li>
   </ul>
 </div>
