@@ -28,6 +28,9 @@ ipcMain.on('saveMacros', (event, macros) => {
   saveUserData(macros);
 });
 ipcMain.on('execute-command', (event, command) => {
+  // '\n' has to be filtered out because when using '^' on multiple lines, the process is in an infinite loop
+  // suggestions for change here ;)
+  command = command.replaceAll('\n', '');
   child_process.exec(command, (error, stdout) => {
     if (error) {
       notify('Befehl fehlgeschlagen', 'Bitte überprüfe, ob du den Befehl richtig eingegeben hast');
