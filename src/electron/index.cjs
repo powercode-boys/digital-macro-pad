@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain, Notification } = require("electron");
 const path = require("path");
-const { saveUserData, readUserData } = require("./file-io.cjs");
+const { saveUserData, readUserData, saveTerminalOutput } = require("./file-io.cjs");
 let child_process = require('child_process');
 
 function createWindow() {
@@ -28,12 +28,14 @@ ipcMain.on('saveMacros', (event, macros) => {
   saveUserData(macros);
 });
 ipcMain.on('execute-command', (event, command) => {
-  command = command.replaceAll("\n", " ");
-  try {
-    child_process.exec(command);
-  } catch(e) {
-    notify('Befehl fehlgeschlagen', 'Bitte überprüfe, ob du den Befehl richtig eingegeben hast');
-  }
+  child_process.exec(command, (error, stdout) => {
+    if (error) {
+      notify('Befehl fehlgeschlagen', 'Bitte überprüfe, ob du den Befehl richtig eingegeben hast');
+      return;
+    }
+    saveTerminalOutput(stdout);
+    notify('Makro ausgeführt', '');
+  });
 });
 
 function notify(title, body) {
@@ -41,6 +43,10 @@ function notify(title, body) {
 }
 
 app.whenReady().then(() => {
+  if (process.platform === 'win32') {
+    app.setAppUserModelId(app.name);
+  }
+
   createWindow();
   ipcMain.handle('getMacros', readUserData);
 
