@@ -5,7 +5,7 @@ const { saveUserData, readUserData } = require("./file-io.cjs");
 function createWindow() {
   const win = new BrowserWindow({
     width: 1050,
-    height: 605,
+    height: 655,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }

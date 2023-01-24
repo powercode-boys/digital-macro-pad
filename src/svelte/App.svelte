@@ -2,6 +2,7 @@
   import AddMacroButton from "./Components/AddMacroButton.svelte";
   import Macro from "./Components/Macro.svelte";
   import Modals from "./Modals.svelte";
+  import SearchBar from "./Components/SearchBar.svelte";
   import { macroStore } from "./stores";
   import {onMount} from "svelte";
 
@@ -13,6 +14,7 @@
 
 <main>
   {#if $macroStore.length > 0}
+    <SearchBar />
     <div
       class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4"
       style="margin-bottom: calc(10vh + 48px - 1rem);"
