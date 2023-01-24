@@ -80,7 +80,7 @@
           bind:value={description}
         />
       </InputWrapper>
-      <InputWrapper id="editMacroBefehlInput" label="Der Befehl für dein Makro">
+      <InputWrapper id="editMacroBefehlInput" label="Der Befehl für dein Makro (Umbrüche mit ^)">
         <textarea
           spellcheck="false"
           placeholder="Befehl"
