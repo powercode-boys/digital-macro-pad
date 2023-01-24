@@ -44,6 +44,16 @@
     document.documentElement.dataset.theme = theme;
     localStorage.setItem("theme", theme);
   }
+
+  async function importMacros() {
+    const macroData = await window.electronAPI.import();
+    if (macroData.error) return;
+    $macroStore = macroData.data;
+  }
+
+  async function exportMacros() {
+    await window.electronAPI.export($macroStore);
+  }
 </script>
 
 <div class="dropdown dropdown-end">
@@ -77,7 +87,8 @@
         class="dropdown dropdown-left max-h-screen"
         on:mouseover={() => (themesOpen = true)}
         on:mouseleave={() => (themesOpen = false)}
-      > <!-- class="outline-accent-content outline-1" wäre eine Möglichkeit um den Themes-Button hervorzuheben -->
+      >
+        <!-- class="outline-accent-content outline-1" wäre eine Möglichkeit um den Themes-Button hervorzuheben -->
         <label tabindex="0" class="flex space-x-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -111,14 +122,10 @@
       </div>
     </li>
     <li>
-      <button class="max-h-screen">
-        Import Macros
-      </button>
+      <button on:click={importMacros}>Import Makros</button>
     </li>
     <li>
-      <button class="max-h-screen">
-        Export Macros
-      </button>
+      <button on:click={exportMacros}>Export Makros</button>
     </li>
   </ul>
 </div>

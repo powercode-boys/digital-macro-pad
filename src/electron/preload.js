@@ -1,7 +1,8 @@
-const { contextBridge, ipcRenderer } = require('electron');
+const { contextBridge, ipcRenderer } = require("electron");
 
-contextBridge.exposeInMainWorld('electronAPI', {
-    saveMacros: (macros) => ipcRenderer.send('saveMacros', macros),
-    getMacros: () => ipcRenderer.invoke('getMacros')
+contextBridge.exposeInMainWorld("electronAPI", {
+  saveMacros: (macros) => ipcRenderer.send("saveMacros", macros),
+  getMacros: () => ipcRenderer.invoke("getMacros"),
+  import: () => ipcRenderer.invoke("importMacros"),
+  export: (macros) => ipcRenderer.send("exportMacros", macros),
 });
-

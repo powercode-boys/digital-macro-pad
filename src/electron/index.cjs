@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
-const { saveUserData, readUserData } = require("./file-io.cjs");
+const { saveUserData, readUserData, importMacros, exportMacros } = require("./file-io.cjs");
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -27,11 +27,15 @@ ipcMain.on('saveMacros', (event, macros) => {
   saveUserData(macros);
 });
 
-
+ipcMain.on('exportMacros', (event, macros) => {
+  exportMacros(macros)
+});
 
 app.whenReady().then(() => {
   createWindow();
   ipcMain.handle('getMacros', readUserData);
+
+  ipcMain.handle("importMacros", importMacros)
 
   app.on("activate", function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
