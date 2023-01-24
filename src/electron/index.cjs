@@ -39,7 +39,10 @@ ipcMain.on('execute-command', (event, command) => {
 });
 
 function notify(title, body) {
-  new Notification({ title: title, body: body }).show();
+  new Notification({
+    title: title,
+    body: body,
+  }).show();
 }
 
 app.whenReady().then(() => {

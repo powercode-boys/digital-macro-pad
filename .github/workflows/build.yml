@@ -2,6 +2,7 @@ name: Build Artifact
 on:
   push:
     branches:
+      - '#20-Ausführen-von-Makro'
       - "main"
       - "dev"
 jobs:
