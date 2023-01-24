@@ -7,6 +7,7 @@
   export let name;
   export let command;
   export let description;
+  export let runnable;
   let error = false;
   let modal;
 
@@ -25,6 +26,7 @@
         name: name,
         command: command,
         description: description,
+        runnable: runnable,
       },
       idx,
     );
@@ -78,11 +80,17 @@
           bind:value={command}
         />
       </InputWrapper>
-      <div class="modal-action space-x-2">
-        <button class="btn btn-success" type="submit">bearbeiten</button>
-        <button class="btn btn-error" type="button" on:click={close}
-          >Abbrechen</button
-        >
+      <div class="modal-action justify-between space-x-2">
+        <label class="label cursor-pointer gap-2">
+          <input type="checkbox" class="checkbox" bind:checked={runnable} />
+          <span class="label-text">Ausführbar</span>
+        </label>
+        <div>
+          <button class="btn btn-success" type="submit">Bearbeiten</button>
+          <button class="btn btn-error" type="button" on:click={close}
+            >Abbrechen</button
+          >
+        </div>
       </div>
     </form>
   </label>

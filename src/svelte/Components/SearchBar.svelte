@@ -2,21 +2,14 @@
   import { macroStore } from "../stores.js";
 
   let keyword = "";
-
   function searchMacros() {
-    for (let i = 0; i < $macroStore.length; i++) {
-      if (
-        $macroStore[i].name.toUpperCase().includes(keyword.toUpperCase()) ||
-        $macroStore[i].description
-          .toUpperCase()
-          .includes(keyword.toUpperCase()) ||
-        $macroStore[i].command.toUpperCase().includes(keyword.toUpperCase())
-      ) {
-        $macroStore[i].visibility = "visible";
-      } else {
-        $macroStore[i].visibility = "hidden";
-      }
-    }
+  $macroStore = $macroStore.map(macro => {
+    let fields = [macro.name, macro.description, macro.command];
+    return {...macro, isVisible: fields
+      .map(str => str.toLowerCase())
+      .find(str => str.includes(keyword.toLowerCase()))
+     };
+   });
   }
 </script>
 

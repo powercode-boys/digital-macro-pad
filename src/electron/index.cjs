@@ -21,6 +21,7 @@ function createWindow() {
     // Load vite dev server page
     win.loadURL("http://localhost:5173/");
   }
+  win.webContents.session.setSpellCheckerLanguages(['en-US', 'de']);
 }
 
 ipcMain.on('saveMacros', (event, macros) => {
