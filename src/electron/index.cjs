@@ -33,8 +33,7 @@ ipcMain.on("saveMacros", (event, macros) => {
   saveUserData(macros);
 });
 ipcMain.on("execute-command", (event, command) => {
-  // '\n' has to be filtered out because when using '^' on multiple lines, the process is in an infinite loop
-  // suggestions for change here ;)
+  // '^' is ignored so that the terminal is not waiting for input. The command is executed in one line
   command = command.replaceAll("^\n", " ")
   child_process.exec(`${command}`, (error, stdout, stderr) => {
     saveTerminalOutput(stdout, stderr);
