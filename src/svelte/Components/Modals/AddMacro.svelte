@@ -7,7 +7,8 @@
   let command = "";
   let description = "";
   let runnable = false;
-  let error = false;
+  let nameError = false;
+  let commandError = false;
   let modal;
 
   function close() {
@@ -16,12 +17,17 @@
     command = "";
     description = "";
     runnable = false;
-    error = false;
+    nameError = false;
+    commandError = false;
   }
 
   function submit() {
     if (name.trim() === "") {
-      error = true;
+      nameError = true;
+      return;
+    }
+    if (runnable && command.trim() === "") {
+      commandError = true;
       return;
     }
     addMacro({
@@ -46,8 +52,11 @@
   <label class="modal-box relative flex flex-col space-y-2">
     <h3 class="font-bold text-lg">Neues Makro erstellen!</h3>
     <p>Erstelle hier einen neues Makro für deine Sammlung.</p>
-    {#if error}
-      <Error>Error! Der Name des Makros darf nicht leer sein!</Error>
+    {#if nameError}
+      <Error>Der Name des Makros darf nicht leer sein!</Error>
+    {/if}
+    {#if commandError}
+      <Error>Ausführbare Makros müssen einen Befehl haben!</Error>
     {/if}
     <form on:submit|preventDefault={submit} class="space-y-2">
       <InputWrapper id="addMacroNameInput" label="Der Name deines Makros">
@@ -55,7 +64,7 @@
           type="text"
           placeholder="Name"
           id="addMacroNameInput"
-          class={"input input-bordered w-full" + (error ? " input-error" : "")}
+          class={"input input-bordered w-full" + (nameError ? " input-error" : "")}
           bind:value={name}
         /></InputWrapper
       >
@@ -71,12 +80,12 @@
           bind:value={description}
         />
       </InputWrapper>
-      <InputWrapper id="addMacroBefehlInput" label="Der Befehl für dein Makro">
+      <InputWrapper id="addMacroBefehlInput" label="Der Befehl für dein Makro (Umbrüche mit ^)">
         <textarea
           spellcheck="false"
           placeholder="Befehl"
           id="addMacroBefehlInput"
-          class="textarea textarea-bordered w-full"
+          class={"textarea textarea-bordered w-full" + (commandError ? " border-error focus:outline-2 focus:outline-error" : "")}
           bind:value={command}
         />
       </InputWrapper>
