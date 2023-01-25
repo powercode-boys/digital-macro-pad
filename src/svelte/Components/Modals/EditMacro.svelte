@@ -7,17 +7,24 @@
   export let name;
   export let command;
   export let description;
-  let error = false;
+  export let runnable;
+  let nameError = false;
+  let commandError = false;
   let modal;
 
   function close() {
     modal.click();
-    error = false;
+    nameError = false;
+    commandError = false;
   }
 
   function submit() {
     if (name.trim() === "") {
-      error = true;
+      nameError = true;
+      return;
+    }
+    if (runnable && command.trim() === "") {
+      commandError = true;
       return;
     }
     editMacro(
@@ -25,6 +32,7 @@
         name: name,
         command: command,
         description: description,
+        runnable: runnable,
       },
       idx,
     );
@@ -44,8 +52,11 @@
   <label class="modal-box relative flex flex-col space-y-2">
     <h3 class="font-bold text-lg">Makro bearbeiten!</h3>
     <p>Bearbeite hier ein Makro aus deine Sammlung.</p>
-    {#if error}
+    {#if nameError}
       <Error>Error! Der Name des Makros darf nicht leer sein!</Error>
+    {/if}
+    {#if commandError}
+      <Error>Ausführbare Makros müssen einen Befehl haben!</Error>
     {/if}
     <form on:submit|preventDefault={submit} class="space-y-2">
       <InputWrapper id="editMacroNameInput" label="Der Name deines Makros">
@@ -53,7 +64,7 @@
           type="text"
           placeholder="Name"
           id="editMacroNameInput"
-          class={"input input-bordered w-full" + (error ? " input-error" : "")}
+          class={"input input-bordered w-full" + (nameError ? " input-error" : "")}
           bind:value={name}
         /></InputWrapper
       >
@@ -69,20 +80,26 @@
           bind:value={description}
         />
       </InputWrapper>
-      <InputWrapper id="editMacroBefehlInput" label="Der Befehl für dein Makro">
+      <InputWrapper id="editMacroBefehlInput" label="Der Befehl für dein Makro (Umbrüche mit ^)">
         <textarea
           spellcheck="false"
           placeholder="Befehl"
           id="editMacroBefehlInput"
-          class="textarea textarea-bordered w-full"
+          class={"textarea textarea-bordered w-full" + (commandError ? " border-error focus:outline-2 focus:outline-error" : "")}
           bind:value={command}
         />
       </InputWrapper>
-      <div class="modal-action space-x-2">
-        <button class="btn btn-success" type="submit">bearbeiten</button>
-        <button class="btn btn-error" type="button" on:click={close}
-          >Abbrechen</button
-        >
+      <div class="modal-action justify-between space-x-2">
+        <label class="label cursor-pointer gap-2">
+          <input type="checkbox" class="checkbox" bind:checked={runnable} />
+          <span class="label-text">Ausführbar</span>
+        </label>
+        <div>
+          <button class="btn btn-success" type="submit">Bearbeiten</button>
+          <button class="btn btn-error" type="button" on:click={close}
+            >Abbrechen</button
+          >
+        </div>
       </div>
     </form>
   </label>

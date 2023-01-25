@@ -6,7 +6,9 @@
   let name = "";
   let command = "";
   let description = "";
-  let error = false;
+  let runnable = false;
+  let nameError = false;
+  let commandError = false;
   let modal;
 
   function close() {
@@ -14,18 +16,25 @@
     name = "";
     command = "";
     description = "";
-    error = false;
+    runnable = false;
+    nameError = false;
+    commandError = false;
   }
 
   function submit() {
     if (name.trim() === "") {
-      error = true;
+      nameError = true;
+      return;
+    }
+    if (runnable && command.trim() === "") {
+      commandError = true;
       return;
     }
     addMacro({
       name: name,
       command: command,
       description: description,
+      runnable: runnable,
     });
     close();
   }
@@ -43,8 +52,11 @@
   <label class="modal-box relative flex flex-col space-y-2">
     <h3 class="font-bold text-lg">Neues Makro erstellen!</h3>
     <p>Erstelle hier einen neues Makro für deine Sammlung.</p>
-    {#if error}
-      <Error>Error! Der Name des Makros darf nicht leer sein!</Error>
+    {#if nameError}
+      <Error>Der Name des Makros darf nicht leer sein!</Error>
+    {/if}
+    {#if commandError}
+      <Error>Ausführbare Makros müssen einen Befehl haben!</Error>
     {/if}
     <form on:submit|preventDefault={submit} class="space-y-2">
       <InputWrapper id="addMacroNameInput" label="Der Name deines Makros">
@@ -52,7 +64,7 @@
           type="text"
           placeholder="Name"
           id="addMacroNameInput"
-          class={"input input-bordered w-full" + (error ? " input-error" : "")}
+          class={"input input-bordered w-full" + (nameError ? " input-error" : "")}
           bind:value={name}
         /></InputWrapper
       >
@@ -68,20 +80,26 @@
           bind:value={description}
         />
       </InputWrapper>
-      <InputWrapper id="addMacroBefehlInput" label="Der Befehl für dein Makro">
+      <InputWrapper id="addMacroBefehlInput" label="Der Befehl für dein Makro (Umbrüche mit ^)">
         <textarea
           spellcheck="false"
           placeholder="Befehl"
           id="addMacroBefehlInput"
-          class="textarea textarea-bordered w-full"
+          class={"textarea textarea-bordered w-full" + (commandError ? " border-error focus:outline-2 focus:outline-error" : "")}
           bind:value={command}
         />
       </InputWrapper>
-      <div class="modal-action space-x-2">
-        <button class="btn btn-success" type="submit">Erstellen</button>
-        <button class="btn btn-error" type="button" on:click={close}
-          >Abbrechen</button
-        >
+      <div class="modal-action justify-between space-x-2">
+        <label class="label cursor-pointer gap-2">
+          <input type="checkbox" class="checkbox" bind:checked={runnable} />
+          <span class="label-text">Ausführbar</span>
+        </label>
+        <div>
+          <button class="btn btn-success" type="submit">Erstellen</button>
+          <button class="btn btn-error" type="button" on:click={close}
+            >Abbrechen</button
+          >
+        </div>
       </div>
     </form>
   </label>
