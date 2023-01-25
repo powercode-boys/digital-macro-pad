@@ -1,11 +1,7 @@
 const { app, BrowserWindow, ipcMain, Notification } = require("electron");
 const path = require("path");
-const {
-  saveUserData,
-  readUserData,
-  saveTerminalOutput,
-} = require("./file-io.cjs");
-let child_process = require("child_process");
+const { saveUserData, readUserData, importMacros, exportMacros, saveTerminalOutput } = require("./file-io.cjs");
+const child_process = require("child_process");
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -48,6 +44,10 @@ ipcMain.on("execute-command", (event, command) => {
   });
 });
 
+ipcMain.on('exportMacros', (event, macros) => {
+  exportMacros(macros);
+});
+
 function notify(title, body) {
   new Notification({
     title: title,
@@ -62,6 +62,8 @@ app.whenReady().then(() => {
 
   createWindow();
   ipcMain.handle("getMacros", readUserData);
+
+  ipcMain.handle("importMacros", importMacros)
 
   app.on("activate", function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
