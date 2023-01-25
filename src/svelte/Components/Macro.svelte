@@ -100,7 +100,7 @@
     </div>
   </div>
   <div class="card-actions justify-end">
-    {#if macro.runable}
+    {#if macro.runnable}
       <MacroActionButton
         action={() => {
           window.electronAPI.executeCommand(macro.command);

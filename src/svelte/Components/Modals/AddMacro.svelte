@@ -6,7 +6,7 @@
   let name = "";
   let command = "";
   let description = "";
-  let runable = false;
+  let runnable = false;
   let nameError = false;
   let commandError = false;
   let modal;
@@ -16,7 +16,7 @@
     name = "";
     command = "";
     description = "";
-    runable = false;
+    runnable = false;
     nameError = false;
     commandError = false;
   }
@@ -26,7 +26,7 @@
       nameError = true;
       return;
     }
-    if (runable && command.trim() === "") {
+    if (runnable && command.trim() === "") {
       commandError = true;
       return;
     }
@@ -34,7 +34,7 @@
       name: name,
       command: command,
       description: description,
-      runable: runable,
+      runnable: runnable,
     });
     close();
   }
@@ -91,7 +91,7 @@
       </InputWrapper>
       <div class="modal-action justify-between space-x-2">
         <label class="label cursor-pointer gap-2">
-          <input type="checkbox" class="checkbox" bind:checked={runable} />
+          <input type="checkbox" class="checkbox" bind:checked={runnable} />
           <span class="label-text">Ausführbar</span>
         </label>
         <div>
