@@ -14,6 +14,7 @@ A simple tool for creating and using digital macros.
 * A **search bar** that filters the macros according to the keyword you typed in.
 * A **theme picker**, so you can customize the UI how you like.
 * **Import/Export** macros, in order to share your macros with others.
+* A **terminal output** file at the AppData directory containing the error message, in case a command fails
 
 
 
