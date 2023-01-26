@@ -18,8 +18,12 @@
     class="card compact dropdown-content shadow bg-base-100 rounded-box w-64"
   >
     <div class="card-body">
-      <h2 class="card-title">You needed more info?</h2>
-      <p>Here is a description!</p>
+      <h2 class="card-title">Ausführbare Befehle</h2>
+      <p>
+        Wenn du ein Makro als ausführbar kennzeichnest und einen Befehl mit
+        mehreren Zeilen zu verwenden, dann verwende bitte ein "^" am ende jeder
+        Zeile des Befehls.
+      </p>
     </div>
   </div>
 </div>
