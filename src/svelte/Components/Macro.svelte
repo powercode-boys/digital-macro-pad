@@ -1,5 +1,5 @@
 <script>
-  import { editStore, removeMacro, macroStore } from "../stores";
+  import { editIdxStore, removeMacro, macroStore } from "../stores";
   import MacroActionButton from "./MacroActionButton.svelte";
 
   export let macro;
@@ -52,9 +52,9 @@
           <li>
             <label
               class="text-base-content"
-              for="editMacroModal"
+              for="edit-modal-toggle"
               on:click={() => {
-                $editStore = { ...macro, idx };
+                $editIdxStore = idx;
               }}
               ><svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -4,7 +4,7 @@
 >
   <label
     class="btn btn-circle btn-success border-2"
-    for="addMacroModal"
+    for="add-modal-toggle"
     ><svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"

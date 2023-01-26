@@ -1,14 +1,25 @@
 <script>
-  import AddMacro from "./Components/Modals/AddMacro.svelte";
-  import EditMacro from "./Components/Modals/EditMacro.svelte";
-  import { editStore } from "./stores";
+  import MacroModal from "./Components/Modals/MacroModal/MacroModal.svelte";
+  import { addMacro, editIdxStore, editMacro, macroStore } from "./stores";
 </script>
 
-<AddMacro />
-<EditMacro
-  command={$editStore.command}
-  description={$editStore.description}
-  name={$editStore.name}
-  runnable={$editStore.runnable}
-  idx={$editStore.idx}
+<MacroModal
+  type="add"
+  heading="Neues Makro erstellen!"
+  subHeading="Erstelle hier einen neues Makro für deine Sammlung."
+  submitText="Erstellen"
+  onSubmit={(macro) => {
+    addMacro(macro);
+  }}
+/>
+
+<MacroModal
+  type="edit"
+  heading="Neues Makro erstellen!"
+  subHeading="Erstelle hier einen neues Makro für deine Sammlung."
+  submitText="Erstellen"
+  values={{ ...$macroStore[$editIdxStore] }}
+  onSubmit={(macro) => {
+    editMacro(macro, $editIdxStore);
+  }}
 />
