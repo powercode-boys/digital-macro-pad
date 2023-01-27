@@ -29,7 +29,6 @@
   };
 
   $: {
-    console.log(values);
     if (
       !(
         isEmpty(values.name) &&
@@ -63,7 +62,6 @@
 
   function onModalToggle(e) {
     let checked = e.target.checked;
-    console.log(values, storeValues, checked);
     if (checked && keepValues) values = { ...storeValues };
     if (!checked) {
       values = {
