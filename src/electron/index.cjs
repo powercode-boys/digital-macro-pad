@@ -1,6 +1,18 @@
-const { app, BrowserWindow, ipcMain, Notification } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  ipcMain,
+  Notification,
+  shell,
+} = require("electron");
 const path = require("path");
-const { saveUserData, readUserData, importMacros, exportMacros, saveTerminalOutput } = require("./file-io.cjs");
+const {
+  saveUserData,
+  readUserData,
+  importMacros,
+  exportMacros,
+  saveTerminalOutput,
+} = require("./file-io.cjs");
 const child_process = require("child_process");
 
 function createWindow() {
@@ -22,15 +34,21 @@ function createWindow() {
     // Load vite dev server page
     win.loadURL("http://localhost:5173/");
   }
-  win.webContents.session.setSpellCheckerLanguages(['en-US', 'de']);
+  win.webContents.session.setSpellCheckerLanguages(["en-US", "de"]);
+
+  win.webContents.on("will-navigate", function (e, url) {
+    e.preventDefault();
+    shell.openExternal(url);
+  });
 }
 
 ipcMain.on("saveMacros", (event, macros) => {
   saveUserData(macros);
 });
+
 ipcMain.on("execute-command", (event, command) => {
   // '^' is ignored so that the terminal is not waiting for input. The command is executed in one line
-  command = command.replaceAll("^\n", " ")
+  command = command.replaceAll("^\n", " ");
   child_process.exec(`${command}`, (error, stdout, stderr) => {
     saveTerminalOutput(stdout, stderr);
     if (error) {
@@ -44,7 +62,7 @@ ipcMain.on("execute-command", (event, command) => {
   });
 });
 
-ipcMain.on('exportMacros', (event, macros) => {
+ipcMain.on("exportMacros", (event, macros) => {
   exportMacros(macros);
 });
 
@@ -63,7 +81,7 @@ app.whenReady().then(() => {
   createWindow();
   ipcMain.handle("getMacros", readUserData);
 
-  ipcMain.handle("importMacros", importMacros)
+  ipcMain.handle("importMacros", importMacros);
 
   app.on("activate", function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();

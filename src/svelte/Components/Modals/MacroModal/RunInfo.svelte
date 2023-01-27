@@ -20,11 +20,12 @@
     <div class="card-body">
       <h2 class="card-title">Ausführbare Befehle</h2>
       <p>
-        Zur Ausführung der Befehle wird im Hintergrund die cmd.exe verwendet.
-        Entsprechend müssen ausführbare Befehle die entsprechende Syntax
-        verwenden. Vor einem Zeilenumbruch muss zum Beispiel die Zeile mit einem
-        "^" beendet werden. Für weitere Infos siehe hier
-        (https://ss64.com/nt/syntax-esc.html)
+        Zur Ausführung der Befehle wird die cmd.exe verwendet, entsprechend
+        müssen Befehle die richtige Syntax verwenden. Vor einem Zeilenumbruch
+        muss bspw. die Zeile mit "^" beendet werden. Weitere Infos <a
+          href="https://ss64.com/nt/syntax-esc.html"
+          class="text-info">hier</a
+        >.
       </p>
     </div>
   </div>
