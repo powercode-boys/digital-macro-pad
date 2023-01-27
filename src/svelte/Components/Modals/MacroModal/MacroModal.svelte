@@ -124,7 +124,7 @@
       </InputWrapper>
       <InputWrapper
         type={`${type}-macro-command-input`}
-        label="Der Befehl deines Makro"
+        label="Der Befehl deines Makros"
       >
         <textarea
           spellcheck="false"
