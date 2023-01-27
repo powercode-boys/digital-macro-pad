@@ -3,7 +3,7 @@
   import InputWrapper from "../../Inputs/InputWrapper.svelte";
   import RunInfo from "./RunInfo.svelte";
 
-  let toggle;
+  let modalToggle;
   let errors = {
     name: false,
     command: false,
@@ -21,34 +21,23 @@
     runnable: false,
   };
 
-  function isUnSet(value) {
+  function isEmpty(value) {
     return value.trim() === "";
   }
 
   function submit() {
-    //error checker for any error
-    let err = false;
+    //check errors
+    errors.name = isEmpty(values.name);
+    errors.command = values.runnable && isEmpty(values.command);
 
-    //check name
-    if (isUnSet(values.name)) {
-      errors.name = true;
-      err = true;
-    }
-
-    //check command when runnable
-    if (values.runnable && isUnSet(values.command)) {
-      errors.command = true;
-      err = true;
-    }
-
-    //exit when no error
-    if (err) return;
+    //exit when name or command is empty
+    if (error.name || error.command) return;
 
     //run user logic (pass values)
     onSubmit(values);
 
     //toggle modal
-    toggle.click();
+    modalToggle.click();
   }
 
   function onModalToggle(e) {
@@ -68,8 +57,9 @@
   }
 </script>
 
+<!-- daisyui uses input checkboxes for state checking -->
 <input
-  bind:this={toggle}
+  bind:this={modalToggle}
   type="checkbox"
   id={`${type}-modal-toggle`}
   class="modal-toggle"
@@ -148,7 +138,7 @@
             class="btn btn-error"
             type="button"
             on:click={() => {
-              toggle.click();
+              modalToggle.click();
             }}>Abbrechen</button
           >
         </div>

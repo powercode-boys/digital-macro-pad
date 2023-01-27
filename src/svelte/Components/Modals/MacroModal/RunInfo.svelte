@@ -20,9 +20,11 @@
     <div class="card-body">
       <h2 class="card-title">Ausführbare Befehle</h2>
       <p>
-        Wenn du ein Makro als ausführbar kennzeichnest und einen Befehl mit
-        mehreren Zeilen zu verwenden, dann verwende bitte ein "^" am ende jeder
-        Zeile des Befehls.
+        Zur Ausführung der Befehle wird im Hintergrund die cmd.exe verwendet.
+        Entsprechend müssen ausführbare Befehle die entsprechende Syntax
+        verwenden. Vor einem Zeilenumbruch muss zum Beispiel die Zeile mit einem
+        "^" beendet werden. Für weitere Infos siehe hier
+        (https://ss64.com/nt/syntax-esc.html)
       </p>
     </div>
   </div>
