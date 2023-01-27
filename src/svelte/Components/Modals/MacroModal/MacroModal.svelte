@@ -31,7 +31,7 @@
     errors.command = values.runnable && isEmpty(values.command);
 
     //exit when name or command is empty
-    if (error.name || error.command) return;
+    if (errors.name || errors.command) return;
 
     //run user logic (pass values)
     onSubmit(values);
