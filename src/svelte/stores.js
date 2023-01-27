@@ -33,9 +33,4 @@ export function editMacro(data, idx) {
 //example
 // editMacro({name: "Test"}, 1) -> changes name of second (bc of 0 indexing) macro to "Test"
 
-export const editStore = writable({
-  name: "",
-  description: "",
-  command: "",
-  idx: 0,
-});
+export const editIdxStore = writable(1);
