@@ -84,7 +84,7 @@
   >
     <li>
       <div
-        class="dropdown dropdown-left max-h-screen"
+        class="dropdown dropdown-left sm:dropdown-right max-h-screen"
         on:mouseover={() => (themesOpen = true)}
         on:mouseleave={() => (themesOpen = false)}
       >

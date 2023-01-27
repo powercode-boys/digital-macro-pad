@@ -18,7 +18,10 @@
   heading="Makro bearbeiten!"
   subHeading="Bearbeite hier ein Makro aus deiner Sammlung."
   submitText="Bearbeiten"
-  values={{ ...$macroStore[$editIdxStore] }}
+  keepValues
+  values={$macroStore[$editIdxStore]
+    ? { ...$macroStore[$editIdxStore] }
+    : { command: "", description: "", name: "", runnable: "" }}
   onSubmit={(macro) => {
     editMacro(macro, $editIdxStore);
   }}

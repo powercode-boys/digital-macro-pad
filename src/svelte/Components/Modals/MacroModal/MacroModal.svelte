@@ -14,12 +14,33 @@
   export let subHeading;
   export let submitText;
   export let onSubmit;
+  export let keepValues = false;
   export let values = {
     name: "",
     description: "",
     command: "",
     runnable: false,
   };
+  let storeValues = {
+    name: "",
+    description: "",
+    command: "",
+    runnable: false,
+  };
+
+  $: {
+    console.log(values);
+    if (
+      !(
+        isEmpty(values.name) &&
+        isEmpty(values.description) &&
+        isEmpty(values.command) &&
+        !values.runnable
+      )
+    ) {
+      storeValues = { ...values };
+    }
+  }
 
   function isEmpty(value) {
     return value.trim() === "";
@@ -42,6 +63,8 @@
 
   function onModalToggle(e) {
     let checked = e.target.checked;
+    console.log(values, storeValues, checked);
+    if (checked && keepValues) values = { ...storeValues };
     if (!checked) {
       values = {
         name: "",
